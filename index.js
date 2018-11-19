@@ -1,11 +1,14 @@
 var jdbc = new (require("jdbc"))();
+var url = process.env.host;
+var user = process.env.user;
+var password = process.env.password;
+
 var config = {
   libpath: __dirname + "drivers/RedshiftJDBC42-1.2.16.1027.jar",
   //libs: [__dirname + 'path/to/other/jars.jar'],
   drivername: "com.amazon.redshift.jdbc41.Driver",
-  url:
-    "jdbc:redshift://analytics-instance.csjicti7mo5h.us-east-1.redshift.amazonaws.com:5439/quipuxanalytics",
-  properties: [["user", "rsmasteruser"], ["password", "C1u5T3r_$nalyt1c5%"]]
+  url,
+  properties: [["user", user], ["password", password]]
 };
 
 exports.handler = async event => {
